@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Customer World Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvmkwNlBojKOv8egUD9M4hJPg6OuAA6KA&callback=initMap"
+    ></script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div class="controls">
+      <h2>Customer Map Filters</h2>
+      <div class="filter-group">
+        <label for="industry-filter">Filter by Industry:</label>
+        <select id="industry-filter">
+          <option value="all">All Industries</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="marcap-filter">Filter by Market Cap:</label>
+        <select id="marcap-filter">
+          <option value="all">All Market Caps</option>
+          <option value="small">Small (< $1 Billion)</option>
+          <option value="medium">Medium ($1 Billion - $10 Billion)</option>
+          <option value="large">Large (> $10 Billion)</option>
+        </select>
+      </div>
+      <p class="legend-title">Marker Size Legend:</p>
+      <ul class="legend">
+        <li><span class="marker-small"></span> < $1 Billion</li>
+        <li><span class="marker-medium"></span> $1 Billion - $10 Billion</li>
+        <li><span class="marker-large"></span> > $10 Billion</li>
+      </ul>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+Customer Name,Address,Marcap,Industry,Latitude,Longitude
+Walmart,"702 SW 8th St, Bentonville, AR 72716, USA",420000000000.0,Retail,,
+Amazon,"410 Terry Ave N, Seattle, WA 98109, USA",1900000000000.0,Internet Services,,
+Apple,"One Apple Park Way, Cupertino, CA 95014, USA",3200000000000.0,Electronics,37.332206,-122.0110271
+CVS Health,"One CVS Dr, Woonsocket, RI 02895, USA",85000000000.0,Healthcare,,
+UnitedHealth Group,"9900 Bren Rd E, Minnetonka, MN 55343, USA",470000000000.0,Healthcare,,
+ExxonMobil,"22777 Springwoods Village Pkwy, Spring, TX 77389, USA",450000000000.0,Energy,,
+Samsung Electronics,"129 Samsung-ro, Yeongtong-gu, Suwon-si, Gyeonggi-do, South Korea",380000000000.0,Electronics,37.2558477,127.0511335
+Berkshire Hathaway,"3555 Farnam St, Omaha, NE 68131, USA",890000000000.0,Diversified Financials,41.257105,-95.96544779999999
+Shell,"Carel van Bylandtlaan 16, 2596 HR Den Haag, Netherlands",230000000000.0,Energy,,
+Toyota Motor,"1 Toyota-cho, Toyota, Aichi 471-8571, Japan",260000000000.0,Automotive,,
+Volkswagen,"Berliner Ring 2, 38440 Wolfsburg, Germany",65000000000.0,Automotive,52.4320914,10.758966
+McKesson,"6555 N State Hwy 161, Irving, TX 75039, USA",70000000000.0,Healthcare,32.8976981,-96.97221650000002
+Chevron,"6001 Bollinger Canyon Rd, San Ramon, CA 94583, USA",300000000000.0,Energy,37.759139,-121.9610456
+BP,"1 St James's Square, London SW1Y 4PD, UK",115000000000.0,Energy,51.5078724,-0.134172
+Cencora,"1300 Morris Dr, Chesterbrook, PA 19087, USA",40000000000.0,Healthcare,40.0687073,-75.4682381
+Cardinal Health,"7000 Cardinal Pl, Dublin, OH 43017, USA",20000000000.0,Healthcare,,
+T-Mobile US,"3625 132nd Ave SE, Bellevue, WA 98006, USA",180000000000.0,Telecommunications,47.57866,-122.16541
+Alphabet,"1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA",2200000000000.0,Internet Services,37.41756350000001,-122.0835341
+Microsoft,"One Microsoft Way, Redmond, WA 98052, USA",3100000000000.0,Software,,
+Costco Wholesale,"999 Lake Drive, Issaquah, WA 98027, USA",350000000000.0,Retail,47.5485941,-122.0507697
+Tsinghua Unigroup,"Tsinghua Science Park, Haidian District, Beijing, China",5000000000.0,Technology,,
+Ping An Insurance,"Ping An Financial Center, Futian District, Shenzhen, China",100000000000.0,Insurance,22.5337879,114.0556996
+China National Petroleum (CNPC),"No. 9 Dongzhimen North Street, Dongcheng District, Beijing, China",300000000000.0,Energy,39.94271,116.43298
+State Grid,"No.86 West Chang'an Street, Xicheng District, Beijing, China",350000000000.0,Utilities,39.90638,116.37656
+Saudi Aramco,"King Abdulaziz Center for World Culture, Dhahran, Saudi Arabia",1800000000000.0,Energy,26.3354262,50.1209593
+Sinopec Group,"No. 22 Chaoyangmen North Street, Chaoyang District, Beijing, China",150000000000.0,Energy,39.9247958,116.4357951
+China Construction Bank,"No. 25 Finance Street, Xicheng District, Beijing, China",250000000000.0,Banking,39.90710989999999,116.37415
+Industrial & Commercial Bank of China (ICBC),"55 Fuxingmen Inner Street, Xicheng District, Beijing, China",300000000000.0,Banking,39.90796,116.3647
+Agricultural Bank of China,"No. 23 Jinrong Street, Xicheng District, Beijing, China",200000000000.0,Banking,39.91269,116.35893
+Bank of China,"1 Fuxingmen Nei Avenue, Xicheng District, Beijing, China",180000000000.0,Banking,39.90871,116.37247
+AT&T,"208 S Akard St, Dallas, TX 75202, USA",130000000000.0,Telecommunications,32.7795587,-96.7989004
+Verizon Communications,"1095 Avenue of the Americas, New York, NY 10036, USA",170000000000.0,Telecommunications,40.7546251,-73.9847407
+Comcast,"One Comcast Center, Philadelphia, PA 19103, USA",160000000000.0,Telecommunications,39.95470299999999,-75.16849619999999
+Procter & Gamble,"One P&G Plaza, Cincinnati, OH 45202, USA",380000000000.0,Consumer Products,39.1027724,-84.506756
+Johnson & Johnson,"One Johnson & Johnson Plaza, New Brunswick, NJ 08933, USA",390000000000.0,Pharmaceuticals,40.4982732,-74.4427856
+Meta Platforms,"1 Hacker Way, Menlo Park, CA 94025, USA",1200000000000.0,Internet Services,37.4844398,-122.1480225
+Tesla,"3500 Deer Creek Rd, Palo Alto, CA 94304, USA",580000000000.0,Automotive,37.3930523,-122.1503113
+TSMC,"No. 8, Li-Hsin Rd. 6, Hsinchu Science Park, Hsinchu 300-78, Taiwan",900000000000.0,Electronics,24.7820648,121.0046856
+NVIDIA,"2788 San Tomas Expy, Santa Clara, CA 95051, USA",3000000000000.0,Semiconductors,37.37187,-121.9659302
+JPMorgan Chase & Co.,"383 Madison Ave, New York, NY 10179, USA",570000000000.0,Banking,40.7557418,-73.9768306
+Bank of America Corp.,"Bank of America Corporate Center, 100 N Tryon St, Charlotte, NC 28255, USA",320000000000.0,Banking,35.2275829,-80.8420897
+Wells Fargo,"420 Montgomery St, San Francisco, CA 94104, USA",200000000000.0,Banking,,
+Citigroup,"388 Greenwich St, New York, NY 10013, USA",120000000000.0,Banking,40.7206548,-74.0107063
+HSBC Holdings,"8 Canada Square, London E14 5HQ, UK",160000000000.0,Banking,51.50568990000001,-0.0175204
+Mercedes-Benz Group,"Mercedesstraße 120, 70372 Stuttgart, Germany",80000000000.0,Automotive,,
+BMW Group,"Petuelring 130, 80809 Munich, Germany",60000000000.0,Automotive,48.1770579,11.5601283
+Siemens,"Werner-von-Siemens-Straße 1, 80333 Munich, Germany",170000000000.0,Industrial Conglomerates,48.1443151,11.5750797
+Hitachi,"6-6, Marunouchi 1-chome, Chiyoda-ku, Tokyo 100-8280, Japan",80000000000.0,Industrial Conglomerates,,
+Sony,"1-7-1 Konan, Minato-ku, Tokyo 108-0075, Japan",110000000000.0,Electronics,35.6312119,139.7436477
+Boeing,"929 Long Bridge Dr, Arlington, VA 22202, USA",110000000000.0,Aerospace & Defense,38.8642623,-77.05006
