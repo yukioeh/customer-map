@@ -1,0 +1,597 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0110271,
+          37.332206
+        ]
+      },
+      "properties": {
+        "name": "Apple",
+        "address": "One Apple Park Way, Cupertino, CA 95014, USA",
+        "marcap": 3200000000000.0,
+        "industry": "Electronics"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.0511335,
+          37.2558477
+        ]
+      },
+      "properties": {
+        "name": "Samsung Electronics",
+        "address": "129 Samsung-ro, Yeongtong-gu, Suwon-si, Gyeonggi-do, South Korea",
+        "marcap": 380000000000.0,
+        "industry": "Electronics"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9654478,
+          41.257105
+        ]
+      },
+      "properties": {
+        "name": "Berkshire Hathaway",
+        "address": "3555 Farnam St, Omaha, NE 68131, USA",
+        "marcap": 890000000000.0,
+        "industry": "Diversified Financials"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.758966,
+          52.4320914
+        ]
+      },
+      "properties": {
+        "name": "Volkswagen",
+        "address": "Berliner Ring 2, 38440 Wolfsburg, Germany",
+        "marcap": 65000000000.0,
+        "industry": "Automotive"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.97221650000002,
+          32.8976981
+        ]
+      },
+      "properties": {
+        "name": "McKesson",
+        "address": "6555 N State Hwy 161, Irving, TX 75039, USA",
+        "marcap": 70000000000.0,
+        "industry": "Healthcare"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.9610456,
+          37.759139
+        ]
+      },
+      "properties": {
+        "name": "Chevron",
+        "address": "6001 Bollinger Canyon Rd, San Ramon, CA 94583, USA",
+        "marcap": 300000000000.0,
+        "industry": "Energy"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.134172,
+          51.5078724
+        ]
+      },
+      "properties": {
+        "name": "BP",
+        "address": "1 St James's Square, London SW1Y 4PD, UK",
+        "marcap": 115000000000.0,
+        "industry": "Energy"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4682381,
+          40.0687073
+        ]
+      },
+      "properties": {
+        "name": "Cencora",
+        "address": "1300 Morris Dr, Chesterbrook, PA 19087, USA",
+        "marcap": 40000000000.0,
+        "industry": "Healthcare"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.16541,
+          47.57866
+        ]
+      },
+      "properties": {
+        "name": "T-Mobile US",
+        "address": "3625 132nd Ave SE, Bellevue, WA 98006, USA",
+        "marcap": 180000000000.0,
+        "industry": "Telecommunications"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0835341,
+          37.41756350000001
+        ]
+      },
+      "properties": {
+        "name": "Alphabet",
+        "address": "1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA",
+        "marcap": 2200000000000.0,
+        "industry": "Internet Services"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0507697,
+          47.5485941
+        ]
+      },
+      "properties": {
+        "name": "Costco Wholesale",
+        "address": "999 Lake Drive, Issaquah, WA 98027, USA",
+        "marcap": 350000000000.0,
+        "industry": "Retail"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.0556996,
+          22.5337879
+        ]
+      },
+      "properties": {
+        "name": "Ping An Insurance",
+        "address": "Ping An Financial Center, Futian District, Shenzhen, China",
+        "marcap": 100000000000.0,
+        "industry": "Insurance"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.43298,
+          39.94271
+        ]
+      },
+      "properties": {
+        "name": "China National Petroleum (CNPC)",
+        "address": "No. 9 Dongzhimen North Street, Dongcheng District, Beijing, China",
+        "marcap": 300000000000.0,
+        "industry": "Energy"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.37656,
+          39.90638
+        ]
+      },
+      "properties": {
+        "name": "State Grid",
+        "address": "No.86 West Chang'an Street, Xicheng District, Beijing, China",
+        "marcap": 350000000000.0,
+        "industry": "Utilities"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.1209593,
+          26.3354262
+        ]
+      },
+      "properties": {
+        "name": "Saudi Aramco",
+        "address": "King Abdulaziz Center for World Culture, Dhahran, Saudi Arabia",
+        "marcap": 1800000000000.0,
+        "industry": "Energy"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4357951,
+          39.9247958
+        ]
+      },
+      "properties": {
+        "name": "Sinopec Group",
+        "address": "No. 22 Chaoyangmen North Street, Chaoyang District, Beijing, China",
+        "marcap": 150000000000.0,
+        "industry": "Energy"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.37415,
+          39.90710989999999
+        ]
+      },
+      "properties": {
+        "name": "China Construction Bank",
+        "address": "No. 25 Finance Street, Xicheng District, Beijing, China",
+        "marcap": 250000000000.0,
+        "industry": "Banking"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.3647,
+          39.90796
+        ]
+      },
+      "properties": {
+        "name": "Industrial & Commercial Bank of China (ICBC)",
+        "address": "55 Fuxingmen Inner Street, Xicheng District, Beijing, China",
+        "marcap": 300000000000.0,
+        "industry": "Banking"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.35893,
+          39.91269
+        ]
+      },
+      "properties": {
+        "name": "Agricultural Bank of China",
+        "address": "No. 23 Jinrong Street, Xicheng District, Beijing, China",
+        "marcap": 200000000000.0,
+        "industry": "Banking"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.37247,
+          39.90871
+        ]
+      },
+      "properties": {
+        "name": "Bank of China",
+        "address": "1 Fuxingmen Nei Avenue, Xicheng District, Beijing, China",
+        "marcap": 180000000000.0,
+        "industry": "Banking"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7989004,
+          32.7795587
+        ]
+      },
+      "properties": {
+        "name": "AT&T",
+        "address": "208 S Akard St, Dallas, TX 75202, USA",
+        "marcap": 130000000000.0,
+        "industry": "Telecommunications"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9847407,
+          40.7546251
+        ]
+      },
+      "properties": {
+        "name": "Verizon Communications",
+        "address": "1095 Avenue of the Americas, New York, NY 10036, USA",
+        "marcap": 170000000000.0,
+        "industry": "Telecommunications"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.16849619999999,
+          39.95470299999999
+        ]
+      },
+      "properties": {
+        "name": "Comcast",
+        "address": "One Comcast Center, Philadelphia, PA 19103, USA",
+        "marcap": 160000000000.0,
+        "industry": "Telecommunications"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.506756,
+          39.1027724
+        ]
+      },
+      "properties": {
+        "name": "Procter & Gamble",
+        "address": "One P&G Plaza, Cincinnati, OH 45202, USA",
+        "marcap": 380000000000.0,
+        "industry": "Consumer Products"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.4427856,
+          40.4982732
+        ]
+      },
+      "properties": {
+        "name": "Johnson & Johnson",
+        "address": "One Johnson & Johnson Plaza, New Brunswick, NJ 08933, USA",
+        "marcap": 390000000000.0,
+        "industry": "Pharmaceuticals"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1480225,
+          37.4844398
+        ]
+      },
+      "properties": {
+        "name": "Meta Platforms",
+        "address": "1 Hacker Way, Menlo Park, CA 94025, USA",
+        "marcap": 1200000000000.0,
+        "industry": "Internet Services"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1503113,
+          37.3930523
+        ]
+      },
+      "properties": {
+        "name": "Tesla",
+        "address": "3500 Deer Creek Rd, Palo Alto, CA 94304, USA",
+        "marcap": 580000000000.0,
+        "industry": "Automotive"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.0046856,
+          24.7820648
+        ]
+      },
+      "properties": {
+        "name": "TSMC",
+        "address": "No. 8, Li-Hsin Rd. 6, Hsinchu Science Park, Hsinchu 300-78, Taiwan",
+        "marcap": 900000000000.0,
+        "industry": "Electronics"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.9659302,
+          37.37187
+        ]
+      },
+      "properties": {
+        "name": "NVIDIA",
+        "address": "2788 San Tomas Expy, Santa Clara, CA 95051, USA",
+        "marcap": 3000000000000.0,
+        "industry": "Semiconductors"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9768306,
+          40.7557418
+        ]
+      },
+      "properties": {
+        "name": "JPMorgan Chase & Co.",
+        "address": "383 Madison Ave, New York, NY 10179, USA",
+        "marcap": 570000000000.0,
+        "industry": "Banking"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8420897,
+          35.2275829
+        ]
+      },
+      "properties": {
+        "name": "Bank of America Corp.",
+        "address": "Bank of America Corporate Center, 100 N Tryon St, Charlotte, NC 28255, USA",
+        "marcap": 320000000000.0,
+        "industry": "Banking"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.0107063,
+          40.7206548
+        ]
+      },
+      "properties": {
+        "name": "Citigroup",
+        "address": "388 Greenwich St, New York, NY 10013, USA",
+        "marcap": 120000000000.0,
+        "industry": "Banking"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.0175204,
+          51.50568990000001
+        ]
+      },
+      "properties": {
+        "name": "HSBC Holdings",
+        "address": "8 Canada Square, London E14 5HQ, UK",
+        "marcap": 160000000000.0,
+        "industry": "Banking"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.5601283,
+          48.1770579
+        ]
+      },
+      "properties": {
+        "name": "BMW Group",
+        "address": "Petuelring 130, 80809 Munich, Germany",
+        "marcap": 60000000000.0,
+        "industry": "Automotive"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.5750797,
+          48.1443151
+        ]
+      },
+      "properties": {
+        "name": "Siemens",
+        "address": "Werner-von-Siemens-Stra\u00dfe 1, 80333 Munich, Germany",
+        "marcap": 170000000000.0,
+        "industry": "Industrial Conglomerates"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.7436477,
+          35.6312119
+        ]
+      },
+      "properties": {
+        "name": "Sony",
+        "address": "1-7-1 Konan, Minato-ku, Tokyo 108-0075, Japan",
+        "marcap": 110000000000.0,
+        "industry": "Electronics"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.05006,
+          38.8642623
+        ]
+      },
+      "properties": {
+        "name": "Boeing",
+        "address": "929 Long Bridge Dr, Arlington, VA 22202, USA",
+        "marcap": 110000000000.0,
+        "industry": "Aerospace & Defense"
+      }
+    }
+  ]
+}

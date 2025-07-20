@@ -1,0 +1,92 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex; /* Use flexbox for layout */
+}
+
+#map {
+  flex-grow: 1; /* Map takes up remaining space */
+  height: 100vh; /* Full viewport height */
+}
+
+.controls {
+  width: 280px; /* Fixed width for controls */
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-left: 1px solid #ddd;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Enable scrolling if content is long */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between filter groups */
+}
+
+.controls h2 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.5em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.filter-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 1em;
+}
+
+/* Legend Styling */
+.legend-title {
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.legend {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.legend span {
+  display: inline-block;
+  border: 1px solid #333;
+  border-radius: 50%;
+  margin-right: 8px;
+  background-color: #007bff; /* Example color, markers will be colored by industry */
+}
+
+.marker-small {
+  width: 10px;
+  height: 10px;
+}
+
+.marker-medium {
+  width: 15px;
+  height: 15px;
+}
+
+.marker-large {
+  width: 20px;
+  height: 20px;
+}
