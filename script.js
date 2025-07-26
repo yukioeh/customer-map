@@ -5,22 +5,39 @@ let uniqueIndustries = new Set(); // To populate the industry filter
 
 // Function to initialize the map (called by Google Maps API script)
 function initMap() {
+  console.log("initMap called: Initializing Google Map..."); // Log 1
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 20, lng: 0 }, // Center globally
     zoom: 2, // World view
     mapTypeControl: false, // Optional: remove map type control
     streetViewControl: false, // Optional: remove street view control
   });
+  console.log("Map initialized. Attempting to fetch GeoJSON..."); // Log 2
 
-  // Load customer data from GeoJSON
   fetch("customers.geojson")
-    .then((response) => response.json())
-    .then((data) => {
-      allCustomersData = data.features;
-      populateIndustryFilter(); // Populate filter *before* displaying markers
-      displayCustomersOnMap(); // Initial display of all customers
+    .then((response) => {
+      if (!response.ok) {
+        // Check if the network request itself was successful
+        throw new Error(
+          `HTTP error! status: ${response.status} - Could not load customers.geojson`
+        );
+      }
+      return response.json();
     })
-    .catch((error) => console.error("Error loading GeoJSON:", error));
+    .then((data) => {
+      console.log("GeoJSON data fetched successfully:", data); // Log 3: IMPORTANT! Check this output
+      allCustomersData = data.features;
+      console.log(
+        "Number of customer features loaded:",
+        allCustomersData.length
+      ); // Log 4: Check if features array is populated
+      populateIndustryFilter();
+      displayCustomersOnMap();
+      console.log("Customers displayed on map (attempted)."); // Log 5
+    })
+    .catch((error) =>
+      console.error("Error loading or processing GeoJSON:", error)
+    ); // Log 6 (for any fetch/json errors)
 
   // Add event listeners for filters
   document
