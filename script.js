@@ -10,20 +10,21 @@ function initMap() {
         center: { lat: 39.8283, lng: -98.5795 }, // Centered on approximate geographical center of contiguous US for better visibility
         zoom: 4, // A higher zoom level to see regional details
         mapTypeControl: false, // Optional: remove map type control
-        streetViewControl: false // Optional: remove street view control
+        streetViewControl: false, // Optional: remove street view control
+        mapId: "84676165da099260abce5f76" // YOUR ACTUAL MAP ID IS ADDED HERE!
     });
     console.log("Map initialized. Attempting to fetch GeoJSON..."); // Log 2
 
     // Load customer data from GeoJSON
     fetch("customers.geojson")
-        .then((response) => {
+        .then(response => {
             if (!response.ok) {
                 // Check if the network request itself was successful
                 throw new Error(`HTTP error! status: ${response.status} - Could not load customers.geojson`);
             }
             return response.json();
         })
-        .then((data) => {
+        .then(data => {
             console.log("GeoJSON data fetched successfully:", data); // Log 3: IMPORTANT! Check this output
             allCustomersData = data.features;
             console.log("Number of customer features loaded:", allCustomersData.length); // Log 4: Check if features array is populated
@@ -31,7 +32,7 @@ function initMap() {
             displayCustomersOnMap(); // Initial display of all customers
             console.log("Customers displayed on map (attempted)."); // Log 5
         })
-        .catch((error) => console.error("Error loading or processing GeoJSON:", error)); // Log 6 (for any fetch/json errors)
+        .catch(error => console.error("Error loading or processing GeoJSON:", error)); // Log 6 (for any fetch/json errors)
 
     // Add event listeners for filters
     document.getElementById('industry-filter').addEventListener('change', applyFilters);
@@ -40,22 +41,20 @@ function initMap() {
 
 // Function to populate the industry filter dropdown
 function populateIndustryFilter() {
-    allCustomersData.forEach((customer) => {
+    allCustomersData.forEach(customer => {
         if (customer.properties.industry) {
             uniqueIndustries.add(customer.properties.industry);
         }
     });
 
-    const industryFilter = document.getElementById("industry-filter");
+    const industryFilter = document.getElementById('industry-filter');
     // Sort industries alphabetically
-    Array.from(uniqueIndustries)
-        .sort()
-        .forEach((industry) => {
-            const option = document.createElement("option");
-            option.value = industry;
-            option.textContent = industry;
-            industryFilter.appendChild(option);
-        });
+    Array.from(uniqueIndustries).sort().forEach(industry => {
+        const option = document.createElement('option');
+        option.value = industry;
+        option.textContent = industry;
+        industryFilter.appendChild(option);
+    });
 }
 
 // Function to get marker color based on industry
