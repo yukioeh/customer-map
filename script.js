@@ -3,14 +3,15 @@ let markers = []; // Array to hold all Google Maps markers
 let allCustomersData = []; // Store all customer data from GeoJSON
 let uniqueIndustries = new Set(); // To populate the industry filter
 
-// Function to initialize the map (called by Google Maps API script)
-function initMap() {
+// Define initMap as a global function on the window object
+window.initMap = function() {
     console.log("initMap called: Initializing Google Map..."); // Log 1
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 39.8283, lng: -98.5795 }, // Centered on approximate geographical center of contiguous US for better visibility
-        zoom: 4, // A higher zoom level to see regional details
+        zoom: 6, // A higher zoom level to see regional details
         mapTypeControl: false, // Optional: remove map type control
         streetViewControl: false, // Optional: remove street view control
+        disableDefaultUI: true, // Disable all default controls for debugging
         mapId: "84676165da099260abce5f76" // YOUR ACTUAL MAP ID IS ADDED HERE!
     });
     console.log("Map initialized. Attempting to fetch GeoJSON..."); // Log 2
@@ -37,7 +38,18 @@ function initMap() {
     // Add event listeners for filters
     document.getElementById('industry-filter').addEventListener('change', applyFilters);
     document.getElementById('marcap-filter').addEventListener('change', applyFilters);
-}
+}; // Note the semicolon here, as it's a function expression
+
+// Ensure initMap is called when the DOM is fully loaded and Google Maps API is ready
+// This pattern explicitly waits for the DOM and API to be ready.
+document.addEventListener("DOMContentLoaded", () => {
+    // If the Google Maps API has already loaded, call initMap directly.
+    // Otherwise, it will be called by the API's own loading mechanism when it's ready.
+    if (typeof google !== 'undefined' && typeof google.maps !== 'undefined') {
+        window.initMap();
+    }
+});
+
 
 // Function to populate the industry filter dropdown
 function populateIndustryFilter() {
@@ -59,23 +71,22 @@ function populateIndustryFilter() {
 
 // Function to get marker color based on industry
 function getIndustryColor(industry) {
-    // You can define a color palette here.
     const colors = {
-        "Technology": "#4285F4", // Google Blue
-        "Finance": "#DB4437",    // Google Red
-        "Healthcare": "#0F9D58", // Google Green
-        "Retail": "#F4B400",     // Google Yellow
-        "Manufacturing": "#673AB7", // Deep Purple
-        "Energy": "#FF5722", // Deep Orange
-        "Automotive": "#00BCD4", // Cyan
-        "Consumer Goods": "#E91E63", // Pink
+        "Technology": "#4285F4",
+        "Finance": "#DB4437",
+        "Healthcare": "#0F9D58",
+        "Retail": "#F4B400",
+        "Manufacturing": "#673AB7",
+        "Energy": "#FF5722",
+        "Automotive": "#00BCD4",
+        "Consumer Goods": "#E91E63",
     };
-    return colors[industry] || "#757575"; // Default grey
+    return colors[industry] || "#757575";
 }
 
-// Function to get marker size (scaled icon) based on Marcap - NO LONGER DIRECTLY USED FOR AdvancedMarkerElement ICON SCALE
+// Function to get marker size (scaled icon) based on Marcap
 function getMarcapSize(marcap) {
-    if (marcap < 1000000000) return 10; // This value will now control content size if you make custom marker.
+    if (marcap < 1000000000) return 10;
     if (marcap >= 1000000000 && marcap < 10000000000) return 15;
     return 20;
 }
@@ -83,33 +94,30 @@ function getMarcapSize(marcap) {
 // Function to clear all existing markers from the map
 function clearMarkers() {
     for (let i = 0; i < markers.length; i++) {
-        markers[i].map = null; // Set map to null for AdvancedMarkerElement
+        markers[i].map = null;
     }
     markers = [];
 }
 
 // Function to display customers based on current filters
-async function displayCustomersOnMap() { // Added async keyword here
-    clearMarkers(); // Clear existing markers before adding new ones
+async function displayCustomersOnMap() {
+    clearMarkers();
 
-    // Ensure the AdvancedMarkerElement library is loaded
-    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker"); // Import AdvancedMarkerElement
+    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
     const selectedIndustry = document.getElementById('industry-filter').value;
     const selectedMarcapTier = document.getElementById('marcap-filter').value;
 
     allCustomersData.forEach(customer => {
         const properties = customer.properties;
-        const coordinates = customer.geometry.coordinates; // [longitude, latitude]
+        const coordinates = customer.geometry.coordinates;
 
         let showCustomer = true;
 
-        // Apply Industry Filter
         if (selectedIndustry !== 'all' && properties.industry !== selectedIndustry) {
             showCustomer = false;
         }
 
-        // Apply Marcap Filter
         if (showCustomer && selectedMarcapTier !== 'all') {
             const marcap = properties.marcap;
             if (selectedMarcapTier === 'small' && marcap >= 1000000000) {
@@ -121,34 +129,33 @@ async function displayCustomersOnMap() { // Added async keyword here
             }
         }
 
-        // Validate coordinates before creating marker
         if (showCustomer && coordinates && typeof coordinates[0] === 'number' && typeof coordinates[1] === 'number' && !isNaN(coordinates[0]) && !isNaN(coordinates[1])) {
-            const latLng = { lat: coordinates[1], lng: coordinates[0] }; // AdvancedMarkerElement prefers object for position
+            const latLng = { lat: coordinates[1], lng: coordinates[0] };
 
-            // Create a simple custom content for the marker, colored by industry and sized by marcap
             const markerContent = document.createElement('div');
             markerContent.style.backgroundColor = getIndustryColor(properties.industry);
             markerContent.style.borderRadius = '50%';
-            markerContent.style.width = `${getMarcapSize(properties.marcap)}px`;
-            markerContent.style.height = `${getMarcapSize(properties.marcap)}px`;
-            markerContent.style.border = '1px solid #333';
+            markerContent.style.width = '30px';
+            markerContent.style.height = '30px';
+            markerContent.style.border = '2px solid white';
+            markerContent.style.boxShadow = '0 0 5px rgba(0,0,0,0.5)';
             markerContent.style.display = 'flex';
             markerContent.style.alignItems = 'center';
             markerContent.style.justifyContent = 'center';
             markerContent.style.color = 'white';
-            markerContent.style.fontSize = '8px';
-            // markerContent.textContent = properties.name.charAt(0); // Optional: first letter of name
+            markerContent.style.fontSize = '14px';
+            markerContent.style.fontWeight = 'bold';
+            markerContent.textContent = properties.name.charAt(0);
 
-            const marker = new AdvancedMarkerElement({ // Use AdvancedMarkerElement
+            const marker = new AdvancedMarkerElement({
                 position: latLng,
                 map: map,
                 title: properties.name,
-                content: markerContent, // Use custom content
+                content: markerContent,
             });
 
             console.log(`Created marker for ${properties.name} at Lat: ${coordinates[1]}, Lng: ${coordinates[0]}`);
 
-            // Create an InfoWindow for each marker
             const infoWindowContent = `
                 <div class="info-window">
                     <h3>${properties.name}</h3>
@@ -161,12 +168,11 @@ async function displayCustomersOnMap() { // Added async keyword here
                 content: infoWindowContent
             });
 
-            // Add click listener to show InfoWindow
             marker.addListener('click', () => {
                 infoWindow.open(map, marker);
             });
 
-            markers.push(marker); // Add to our array of markers
+            markers.push(marker);
         } else {
             console.warn(`Skipped creating marker for ${properties.name} due to invalid coordinates or filters: ${coordinates}`);
         }
