@@ -3,7 +3,7 @@ let markers = []; // Array to hold all Google Maps markers
 let allCustomersData = []; // Store all customer data from GeoJSON
 let uniqueIndustries = new Set(); // To populate the industry filter
 
-// Define initMap as a global function on the window object
+// Function to initialize the map (called by Google Maps API script)
 window.initMap = function() {
     console.log("initMap called: Initializing Google Map..."); // Log 1
     map = new google.maps.Map(document.getElementById('map'), {
@@ -71,24 +71,35 @@ function populateIndustryFilter() {
 
 // Function to get marker color based on industry
 function getIndustryColor(industry) {
+    // Custom palette using ServiceNow accent colors for distinction
     const colors = {
-        "Technology": "#4285F4",
-        "Finance": "#DB4437",
-        "Healthcare": "#0F9D58",
-        "Retail": "#F4B400",
-        "Manufacturing": "#673AB7",
-        "Energy": "#FF5722",
-        "Automotive": "#00BCD4",
-        "Consumer Goods": "#E91E63",
+        "Technology": "#0070D2",        // ServiceNow $color-blue
+        "Finance": "#8A2BE2",           // ServiceNow $color-purple
+        "Healthcare": "#65BC3C",        // ServiceNow $color-green
+        "Retail": "#FFC024",            // ServiceNow $color-yellow
+        "Manufacturing": "#FF8C00",     // ServiceNow $color-orange
+        "Energy": "#D92027",            // ServiceNow $color-red
+        "Automotive": "#00B5AD",        // ServiceNow $color-cyan
+        "Consumer Goods": "#FF69B4",    // ServiceNow $color-pink
+        "Diversified Financials": "#8A2BE2", // Reuse purple
+        "Software": "#0070D2",          // Reuse blue
+        "Telecommunications": "#00B5AD", // Reuse cyan
+        "Pharmaceuticals": "#65BC3C",   // Reuse green
+        "Semiconductors": "#0070D2",    // Reuse blue
+        "Banking": "#8A2BE2",           // Reuse purple
+        "Industrial Conglomerates": "#FFC024", // Reuse yellow
+        "Aerospace & Defense": "#65BC3C", // Reuse green
+        "Utilities": "#00B5AD",         // Reuse cyan
+        // Default color for industries not explicitly listed
     };
-    return colors[industry] || "#757575";
+    return colors[industry] || "#888888"; // A neutral grey if industry not in palette
 }
 
-// Function to get marker size (scaled icon) based on Marcap
+// Function to get marker size (scaled content) based on Marcap
 function getMarcapSize(marcap) {
-    if (marcap < 1000000000) return 10;
-    if (marcap >= 1000000000 && marcap < 10000000000) return 15;
-    return 20;
+    if (marcap < 1000000000) return 20;
+    if (marcap >= 1000000000 && marcap < 10000000000) return 28;
+    return 36;
 }
 
 // Function to clear all existing markers from the map
@@ -135,15 +146,15 @@ async function displayCustomersOnMap() {
             const markerContent = document.createElement('div');
             markerContent.style.backgroundColor = getIndustryColor(properties.industry);
             markerContent.style.borderRadius = '50%';
-            markerContent.style.width = '30px';
-            markerContent.style.height = '30px';
-            markerContent.style.border = '2px solid white';
-            markerContent.style.boxShadow = '0 0 5px rgba(0,0,0,0.5)';
+            markerContent.style.width = `${getMarcapSize(properties.marcap)}px`;
+            markerContent.style.height = `${getMarcapSize(properties.marcap)}px`;
+            markerContent.style.border = `2px solid #FFFFFF`;
+            markerContent.style.boxShadow = '0 2px 5px rgba(0,0,0,0.5)';
             markerContent.style.display = 'flex';
             markerContent.style.alignItems = 'center';
             markerContent.style.justifyContent = 'center';
-            markerContent.style.color = 'white';
-            markerContent.style.fontSize = '14px';
+            markerContent.style.color = '#FFFFFF';
+            markerContent.style.fontSize = `${Math.round(getMarcapSize(properties.marcap) / 3.5)}px`;
             markerContent.style.fontWeight = 'bold';
             markerContent.textContent = properties.name.charAt(0);
 
@@ -157,10 +168,10 @@ async function displayCustomersOnMap() {
             console.log(`Created marker for ${properties.name} at Lat: ${coordinates[1]}, Lng: ${coordinates[0]}`);
 
             const infoWindowContent = `
-                <div class="info-window">
-                    <h3>${properties.name}</h3>
-                    <p><strong>Address:</strong> ${properties.address || 'N/A'}</p>
-                    <p><strong>Industry:</strong> ${properties.industry || 'N/A'}</p>
+                <div class="info-window" style="color: #333; font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;">
+                    <h3 style="margin-top: 0; color: #1A1A1A;">${properties.name}</h3>
+                    <p style="margin-bottom: 5px;"><strong>Address:</strong> ${properties.address || 'N/A'}</p>
+                    <p style="margin-bottom: 5px;"><strong>Industry:</strong> ${properties.industry || 'N/A'}</p>
                     <p><strong>Market Cap:</strong> $${(properties.marcap / 1000000000).toFixed(2)} Billion</p>
                 </div>
             `;

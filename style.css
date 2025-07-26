@@ -1,70 +1,98 @@
 html, body {
-    height: 100%; /* Ensures they take full height of viewport */
-    width: 100%;  /* *** CRUCIAL: Ensures they take full width of viewport *** */
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    /* Removed display: flex from html, body for clarity, apply only to body */
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif; /* Recommended modern sans-serif */
+    background-color: #1A1A1A; /* ServiceNow $color-darkest for page background */
+    color: #E0E0E0; /* ServiceNow $color-lightest for default text (adapted for dark theme) */
 }
 
 body {
-    display: flex; /* Use flexbox for layout, applied only to body */
-    flex-direction: row; /* Default for flex, but good to be explicit for side-by-side */
-    overflow: hidden; /* Prevent scrolling issues if content exceeds viewport */
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
 }
 
 #map {
-    flex-grow: 1; /* Map takes up all available space */
-    flex-shrink: 1; /* Allows map to shrink if needed */
-    flex-basis: 0; /* Gives map a starting width of 0 before growing, ensuring it uses available space */
-    height: 100vh; /* Map takes full viewport height */
-    min-width: 0; /* Allows flex item to shrink below content size if necessary */
-    position: relative; /* Ensure map can be positioned within its container if needed by Google Maps API */
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    height: 100vh;
+    min-width: 0;
+    position: relative;
 }
 
 .controls {
-    flex-shrink: 0; /* Prevent controls from shrinking */
-    width: 280px; /* Fixed width for controls */
+    flex-shrink: 0;
+    width: 280px;
     padding: 20px;
-    background-color: #f8f8f8;
-    border-left: 1px solid #ddd;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-    overflow-y: auto; /* Enable scrolling if content is long */
+    background-color: #2A2A2A; /* ServiceNow $color-darker for control panel background */
+    border-left: 1px solid #444444; /* ServiceNow $color-dark for subtle border */
+    box-shadow: -2px 0 15px rgba(0,0,0,0.7); /* Deeper shadow for depth */
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Space between filter groups */
+    gap: 15px;
+    color: #E0E0E0; /* Ensure text in controls is light grey */
+    font-size: 0.95em;
 }
 
 .controls h2 {
     margin-top: 0;
-    color: #333;
-    font-size: 1.5em;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
+    color: #FFFFFF; /* ServiceNow $color-white for headings */
+    font-size: 1.7em;
+    border-bottom: 1px solid #444444; /* ServiceNow $color-dark for border */
+    padding-bottom: 12px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 .filter-group label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #E0E0E0; /* Light text for labels */
+    font-size: 1.05em;
 }
 
 .filter-group select {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: white;
+    padding: 10px;
+    border: 1px solid #444444; /* ServiceNow $color-dark for borders */
+    border-radius: 5px;
+    background-color: #1A1A1A; /* ServiceNow $color-darkest for select background */
+    color: #E0E0E0; /* Light text for select options */
     font-size: 1em;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Custom dropdown arrow using $color-lightest */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23E0E0E0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Legend Styling */
+.filter-group select:hover {
+    border-color: #0070D2; /* ServiceNow $color-accent on hover */
+    box-shadow: 0 0 5px rgba(0, 112, 210, 0.5);
+}
+
+.filter-group select option {
+    background-color: #2A2A2A; /* Panel background for options */
+    color: #E0E0E0;
+}
+
 .legend-title {
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    color: #555;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #FFFFFF; /* ServiceNow $color-white for legend title */
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .legend {
@@ -76,28 +104,25 @@ body {
 .legend li {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
 }
 
 .legend span {
     display: inline-block;
-    border: 1px solid #333;
+    border: 1px solid #444444; /* ServiceNow $color-dark for legend circles border */
     border-radius: 50%;
-    margin-right: 8px;
-    background-color: #007bff; /* Example color, markers will be colored by industry */
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
-.marker-small {
-    width: 10px;
-    height: 10px;
+.info-window {
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    color: #333; /* Dark text on light default info window background */
+    font-size: 0.9em;
 }
-
-.marker-medium {
-    width: 15px;
-    height: 15px;
-}
-
-.marker-large {
-    width: 20px;
-    height: 20px;
+.info-window h3 {
+    color: #1A1A1A; /* Dark heading for info window */
 }
