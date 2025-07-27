@@ -3,46 +3,46 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif; /* Recommended modern sans-serif */
-    background-color: #1A1A1A; /* ServiceNow $color-darkest for page background */
-    color: #E0E0E0; /* ServiceNow $color-lightest for default text (adapted for dark theme) */
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background-color: #1A1A1A; /* ServiceNow $color-darkest */
+    color: #E0E0E0; /* ServiceNow $color-lightest adapted */
 }
 
 body {
     display: flex;
-    flex-direction: row;
-    overflow: hidden;
+    flex-direction: row; /* Default for desktop: side-by-side */
+    overflow: hidden; /* Prevent body scroll */
 }
 
 #map {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 0;
-    height: 100vh;
+    height: 100vh; /* Full viewport height on desktop */
     min-width: 0;
     position: relative;
 }
 
 .controls {
     flex-shrink: 0;
-    width: 280px;
+    width: 280px; /* Fixed width on desktop */
     padding: 20px;
-    background-color: #2A2A2A; /* ServiceNow $color-darker for control panel background */
-    border-left: 1px solid #444444; /* ServiceNow $color-dark for subtle border */
-    box-shadow: -2px 0 15px rgba(0,0,0,0.7); /* Deeper shadow for depth */
+    background-color: #2A2A2A; /* ServiceNow $color-darker */
+    border-left: 1px solid #444444; /* ServiceNow $color-dark */
+    box-shadow: -2px 0 15px rgba(0,0,0,0.7);
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    color: #E0E0E0; /* Ensure text in controls is light grey */
+    color: #E0E0E0;
     font-size: 0.95em;
 }
 
 .controls h2 {
     margin-top: 0;
-    color: #FFFFFF; /* ServiceNow $color-white for headings */
+    color: #FFFFFF; /* ServiceNow $color-white */
     font-size: 1.7em;
-    border-bottom: 1px solid #444444; /* ServiceNow $color-dark for border */
+    border-bottom: 1px solid #444444;
     padding-bottom: 12px;
     font-weight: 700;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
@@ -52,22 +52,21 @@ body {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
-    color: #E0E0E0; /* Light text for labels */
+    color: #E0E0E0;
     font-size: 1.05em;
 }
 
 .filter-group select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #444444; /* ServiceNow $color-dark for borders */
+    border: 1px solid #444444;
     border-radius: 5px;
-    background-color: #1A1A1A; /* ServiceNow $color-darkest for select background */
-    color: #E0E0E0; /* Light text for select options */
+    background-color: #1A1A1A; /* ServiceNow $color-darkest */
+    color: #E0E0E0;
     font-size: 1em;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    /* Custom dropdown arrow using $color-lightest */
     background-image: url('data:image/svg+xml;utf8,<svg fill="%23E0E0E0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
     background-repeat: no-repeat;
     background-position: right 8px center;
@@ -76,12 +75,12 @@ body {
 }
 
 .filter-group select:hover {
-    border-color: #0070D2; /* ServiceNow $color-accent on hover */
+    border-color: #0070D2; /* ServiceNow $color-accent */
     box-shadow: 0 0 5px rgba(0, 112, 210, 0.5);
 }
 
 .filter-group select option {
-    background-color: #2A2A2A; /* Panel background for options */
+    background-color: #2A2A2A;
     color: #E0E0E0;
 }
 
@@ -89,7 +88,7 @@ body {
     font-weight: 700;
     margin-top: 30px;
     margin-bottom: 15px;
-    color: #FFFFFF; /* ServiceNow $color-white for legend title */
+    color: #FFFFFF; /* ServiceNow $color-white */
     font-size: 1.1em;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -110,7 +109,7 @@ body {
 
 .legend span {
     display: inline-block;
-    border: 1px solid #444444; /* ServiceNow $color-dark for legend circles border */
+    border: 1px solid #444444; /* ServiceNow $color-dark */
     border-radius: 50%;
     margin-right: 12px;
     width: 18px;
@@ -125,4 +124,52 @@ body {
 }
 .info-window h3 {
     color: #1A1A1A; /* Dark heading for info window */
+}
+
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) { /* Applies styles when screen width is 768px or less */
+    body {
+        flex-direction: column; /* Stack map and controls vertically */
+        overflow-y: auto; /* Allow body to scroll if content overflows */
+        overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+
+    #map {
+        height: 60vh; /* Map takes 60% of viewport height on mobile */
+        width: 100%; /* Map takes full width */
+        flex-basis: auto; /* Reset flex-basis */
+        order: 2; /* Map appears below controls */
+    }
+
+    .controls {
+        width: 100%; /* Controls take full width on mobile */
+        height: auto; /* Controls height adjusts to content */
+        max-height: 40vh; /* Limit max height to prevent controls from being too tall */
+        overflow-y: auto; /* Allow controls to scroll independently if content is too long */
+        border-left: none; /* Remove left border */
+        border-bottom: 1px solid #444444; /* Add bottom border */
+        box-shadow: 0 2px 15px rgba(0,0,0,0.7); /* Adjust shadow for bottom */
+        order: 1; /* Controls appear at the top */
+    }
+
+    .controls h2 {
+        text-align: center; /* Center heading on mobile */
+    }
+}
+
+@media (max-width: 480px) { /* Further adjustments for very small screens */
+    .controls {
+        padding: 15px; /* Reduce padding */
+        font-size: 0.9em; /* Slightly smaller base font */
+    }
+    .controls h2 {
+        font-size: 1.5em; /* Smaller heading */
+    }
+    .filter-group label {
+        font-size: 1em;
+    }
+    .filter-group select {
+        padding: 8px; /* Smaller padding in select */
+    }
 }
