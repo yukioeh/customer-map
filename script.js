@@ -16,6 +16,15 @@ window.initMap = function() {
     });
     console.log("Map initialized. Attempting to fetch GeoJSON..."); // Log 2
 
+    // This is a common workaround for maps not rendering fully on first load
+    // It forces the map to redraw after a short delay
+    google.maps.event.addListenerOnce(map, 'idle', function(){
+        // The map is now fully loaded and rendered
+        console.log("Map 'idle' event fired. Forcing resize and center.");
+        google.maps.event.trigger(map, 'resize');
+        map.setCenter({ lat: 39.8283, lng: -98.5795 }); // Re-center to ensure tiles load correctly
+    });
+
     // Load customer data from GeoJSON
     fetch("customers.geojson")
         .then(response => {
@@ -53,13 +62,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Function to populate the industry filter dropdown
 function populateIndustryFilter() {
+    uniqueIndustries = new Set(); // Reset set in case it's called multiple times
+
     allCustomersData.forEach(customer => {
+        // Log for debugging iPhone dropdown
+        console.log("Processing customer for industry:", customer.properties.name, customer.properties.industry);
         if (customer.properties.industry) {
             uniqueIndustries.add(customer.properties.industry);
+        } else {
+            console.warn("Customer has no industry defined:", customer.properties.name);
         }
     });
 
+    console.log("Unique industries found:", Array.from(uniqueIndustries)); // Log for debugging iPhone dropdown
+
     const industryFilter = document.getElementById('industry-filter');
+    // Clear existing options (except "All Industries")
+    while (industryFilter.options.length > 1) {
+        industryFilter.remove(1);
+    }
+
     // Sort industries alphabetically
     Array.from(uniqueIndustries).sort().forEach(industry => {
         const option = document.createElement('option');
@@ -67,6 +89,7 @@ function populateIndustryFilter() {
         option.textContent = industry;
         industryFilter.appendChild(option);
     });
+    console.log("Industry filter populated."); // Log for debugging iPhone dropdown
 }
 
 // Function to get marker color based on industry
