@@ -3,7 +3,7 @@ let markers = []; // Array to hold all Google Maps markers
 let allCustomersData = []; // Store all customer data from GeoJSON
 let uniqueIndustries = new Set(); // To populate the industry filter
 
-// Function to initialize the map (called by Google Maps API script)
+// Define initMap as a global function on the window object
 window.initMap = function() {
     console.log("initMap called: Initializing Google Map..."); // Log 1
     map = new google.maps.Map(document.getElementById('map'), {
@@ -25,47 +25,41 @@ window.initMap = function() {
         map.setCenter({ lat: 39.8283, lng: -98.5795 }); // Re-center to ensure tiles load correctly
     });
 
-    // Load customer data from GeoJSON
     fetch("customers.geojson")
         .then(response => {
             if (!response.ok) {
-                // Check if the network request itself was successful
                 throw new Error(`HTTP error! status: ${response.status} - Could not load customers.geojson`);
             }
             return response.json();
         })
         .then(data => {
-            console.log("GeoJSON data fetched successfully:", data); // Log 3: IMPORTANT! Check this output
+            console.log("GeoJSON data fetched successfully:", data);
             allCustomersData = data.features;
-            console.log("Number of customer features loaded:", allCustomersData.length); // Log 4: Check if features array is populated
-            populateIndustryFilter(); // Populate filter *before* displaying markers
-            displayCustomersOnMap(); // Initial display of all customers
-            console.log("Customers displayed on map (attempted)."); // Log 5
+            console.log("Number of customer features loaded:", allCustomersData.length);
+            populateIndustryFilter();
+            displayCustomersOnMap();
+            console.log("Customers displayed on map (attempted).");
         })
-        .catch(error => console.error("Error loading or processing GeoJSON:", error)); // Log 6 (for any fetch/json errors)
+        .catch(error => console.error("Error loading or processing GeoJSON:", error));
 
-    // Add event listeners for filters
     document.getElementById('industry-filter').addEventListener('change', applyFilters);
     document.getElementById('marcap-filter').addEventListener('change', applyFilters);
 }; // Note the semicolon here, as it's a function expression
 
-// Ensure initMap is called when the DOM is fully loaded and Google Maps API is ready
-// This pattern explicitly waits for the DOM and API to be ready.
-document.addEventListener("DOMContentLoaded", () => {
+// *** MODIFIED: Use window.onload for a more robust initialization trigger ***
+window.onload = function() {
     // If the Google Maps API has already loaded, call initMap directly.
     // Otherwise, it will be called by the API's own loading mechanism when it's ready.
     if (typeof google !== 'undefined' && typeof google.maps !== 'undefined') {
         window.initMap();
     }
-});
-
+};
 
 // Function to populate the industry filter dropdown
 function populateIndustryFilter() {
     uniqueIndustries = new Set(); // Reset set in case it's called multiple times
 
     allCustomersData.forEach(customer => {
-        // Log for debugging iPhone dropdown
         console.log("Processing customer for industry:", customer.properties.name, customer.properties.industry);
         if (customer.properties.industry) {
             uniqueIndustries.add(customer.properties.industry);
@@ -74,48 +68,44 @@ function populateIndustryFilter() {
         }
     });
 
-    console.log("Unique industries found:", Array.from(uniqueIndustries)); // Log for debugging iPhone dropdown
+    console.log("Unique industries found:", Array.from(uniqueIndustries));
 
     const industryFilter = document.getElementById('industry-filter');
-    // Clear existing options (except "All Industries")
     while (industryFilter.options.length > 1) {
         industryFilter.remove(1);
     }
 
-    // Sort industries alphabetically
     Array.from(uniqueIndustries).sort().forEach(industry => {
         const option = document.createElement('option');
         option.value = industry;
         option.textContent = industry;
         industryFilter.appendChild(option);
     });
-    console.log("Industry filter populated."); // Log for debugging iPhone dropdown
+    console.log("Industry filter populated.");
 }
 
 // Function to get marker color based on industry
 function getIndustryColor(industry) {
-    // Custom palette using ServiceNow accent colors for distinction
     const colors = {
-        "Technology": "#0070D2",        // ServiceNow $color-blue
-        "Finance": "#8A2BE2",           // ServiceNow $color-purple
-        "Healthcare": "#65BC3C",        // ServiceNow $color-green
-        "Retail": "#FFC024",            // ServiceNow $color-yellow
-        "Manufacturing": "#FF8C00",     // ServiceNow $color-orange
-        "Energy": "#D92027",            // ServiceNow $color-red
-        "Automotive": "#00B5AD",        // ServiceNow $color-cyan
-        "Consumer Goods": "#FF69B4",    // ServiceNow $color-pink
-        "Diversified Financials": "#8A2BE2", // Reuse purple
-        "Software": "#0070D2",          // Reuse blue
-        "Telecommunications": "#00B5AD", // Reuse cyan
-        "Pharmaceuticals": "#65BC3C",   // Reuse green
-        "Semiconductors": "#0070D2",    // Reuse blue
-        "Banking": "#8A2BE2",           // Reuse purple
-        "Industrial Conglomerates": "#FFC024", // Reuse yellow
-        "Aerospace & Defense": "#65BC3C", // Reuse green
-        "Utilities": "#00B5AD",         // Reuse cyan
-        // Default color for industries not explicitly listed
+        "Technology": "#0070D2",
+        "Finance": "#8A2BE2",
+        "Healthcare": "#65BC3C",
+        "Retail": "#FFC024",
+        "Manufacturing": "#FF8C00",
+        "Energy": "#D92027",
+        "Automotive": "#00B5AD",
+        "Consumer Goods": "#FF69B4",
+        "Diversified Financials": "#8A2BE2",
+        "Software": "#0070D2",
+        "Telecommunications": "#00B5AD",
+        "Pharmaceuticals": "#65BC3C",
+        "Semiconductors": "#0070D2",
+        "Banking": "#8A2BE2",
+        "Industrial Conglomerates": "#FFC024",
+        "Aerospace & Defense": "#65BC3C",
+        "Utilities": "#00B5AD",
     };
-    return colors[industry] || "#888888"; // A neutral grey if industry not in palette
+    return colors[industry] || "#888888";
 }
 
 // Function to get marker size (scaled content) based on Marcap
@@ -169,15 +159,15 @@ async function displayCustomersOnMap() {
             const markerContent = document.createElement('div');
             markerContent.style.backgroundColor = getIndustryColor(properties.industry);
             markerContent.style.borderRadius = '50%';
-            markerContent.style.width = `${getMarcapSize(properties.marcap)}px`;
-            markerContent.style.height = `${getMarcapSize(properties.marcap)}px`;
+            markerContent.style.width = '30px'; // Fixed size for visibility, was `${getMarcapSize(properties.marcap)}px`
+            markerContent.style.height = '30px'; // Fixed size for visibility
             markerContent.style.border = `2px solid #FFFFFF`;
             markerContent.style.boxShadow = '0 2px 5px rgba(0,0,0,0.5)';
             markerContent.style.display = 'flex';
             markerContent.style.alignItems = 'center';
             markerContent.style.justifyContent = 'center';
             markerContent.style.color = '#FFFFFF';
-            markerContent.style.fontSize = `${Math.round(getMarcapSize(properties.marcap) / 3.5)}px`;
+            markerContent.style.fontSize = '14px'; // Fixed font size
             markerContent.style.fontWeight = 'bold';
             markerContent.textContent = properties.name.charAt(0);
 
